@@ -91,12 +91,14 @@ def main():
                 src_image = j
                 if "100x" not in image_loc:
                     continue
-                dest_image = './../../Slide/ogf-0021/ogf_familes/' + Family
+                dest_image = './../../../ogf_familes/' + Family
                 if not os.path.exists(dest_image):
                     os.makedirs(dest_image)
-                dest_image = './../../Slide/ogf-0021/ogf_familes/' + Family + '/' + str(count).zfill(5) + '.jpg'
+                dest_image = './../../../ogf_familes/' + Family + '/' + str(count).zfill(5) + '.jpg'
 
                 #src_image = str(j).strip().replace('\\\\', '/')
+                Genus = ''
+                View = ''
                 add_text_to_image(src_image, dest_image, image_loc, Family,Genus,View)
                 x = 1
                 count = count +1
@@ -111,7 +113,7 @@ def main():
     return
 
 if __name__ == '__main__':
-    directory = './../../Slide/ogf-0021/ogf_familes/'
+    directory = './../../../ogf_familes/'
     if not os.path.exists(directory):
         os.makedirs(directory)
     main()
