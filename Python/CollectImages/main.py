@@ -34,6 +34,7 @@ def create_image_dataframe():
         'Annotated',
         'Nem',
         'Image',
+        'Moved_Image_Name',
         'Y',
         'X',
         'Mag',
@@ -125,6 +126,7 @@ def main():
             col_003 = str(row['Annotated']).strip()
             col_004 = str(row['Nem']).strip()
             col_005 = str(row['Image']).strip()
+            #col_005_1 = str(row['Moved_Image_Name']).strip()
             col_006 = str(row['Y']).strip()
             col_007 = str(row['X']).strip()
             col_008 = str(row['Mag']).strip()
@@ -179,13 +181,23 @@ def main():
             for j in jpg_files:
                 image_loc = str(j).strip().replace('./../../Slide/','')
                 src_image = j
+                if '100x' in src_image:
+                    col_008 = '100x'
+                elif '010x' in src_image:
+                    col_008 = '010x'
+                elif '020x' in src_image:
+                    col_008 = '020x'
+                elif '040x' in src_image:
+                    col_008 = '040x'
                 col_005 = image_loc
+                col_005_1 =  'ogf_' + str(count).zfill(5) + '.jpg'
                 colList = [
                     col_001,
                     col_002,
                     col_003,
                     col_004,
                     col_005,
+                    col_005_1,
                     col_006,
                     col_007,
                     col_008,
