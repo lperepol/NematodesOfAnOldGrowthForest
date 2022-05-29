@@ -97,8 +97,10 @@ def main():
                 dest_image = './../../../ogf_familes/' + Family + '/' + str(count).zfill(5) + '.jpg'
 
                 #src_image = str(j).strip().replace('\\\\', '/')
-                Genus = ''
-                View = ''
+                if len(Genus) < 3 :
+                    Genus = ''
+                if len(View) < 3 :
+                    View = ''
                 add_text_to_image(src_image, dest_image, image_loc, Family,Genus,View)
                 x = 1
                 count = count +1
