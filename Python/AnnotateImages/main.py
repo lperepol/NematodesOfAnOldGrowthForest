@@ -63,14 +63,16 @@ def main():
     df = read_excel(fname)
     for i, row in df.iterrows():
         Family = str(row['Family']).strip()
+        if len(Family) < 3:
+            Family = 'Unidentified'
         Genus = str(row['Genus']).strip()
         View = str(row['View']).strip()
         Nem = str(row['Nem']).strip()
         Moved_Image_Name = str(row['Moved_Image_Name']).strip()
         Src_Image = str(row['Image']).strip()
         Mag = str(row['Mag']).strip()
-        if Mag != '100x':
-            continue
+        #if Mag != '100x':
+        #    continue
         if Family == 'nan':
             Family = 'Unidentified'
         #print(Family)
