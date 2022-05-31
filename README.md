@@ -2,6 +2,9 @@
 
 This project (NematodesOfAnOldGrowthForest) contains raw images of nematodes. 
 
+Images can be viewed a number of ways. A convient way is viewing through this Flicker url: 
+https://www.flickr.com/photos/182307607@N07/collections/72157720585233027/
+
 Directories 
 1) Metadata
 2) Python
