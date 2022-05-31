@@ -190,7 +190,7 @@ def main():
                 elif '040x' in src_image:
                     col_008 = '040x'
                 col_005 = image_loc
-                col_005_1 =  'ogf_' + str(count).zfill(5) + '.jpg'
+                col_005_1 =  + 'ogf_' + col_004 + '_' + str(count).zfill(5) + '.jpg'
                 colList = [
                     col_001,
                     col_002,
@@ -249,7 +249,7 @@ def main():
                 count = count +1
 
     cid = cid.fillna('')
-    cid.to_csv("./../../Metadata/Created_AllImageMetadata.csv",index=False )
+    cid.to_csv("./../../Metadata/Created_AllImageMetadata.csv" )
     return
 
 if __name__ == '__main__':
