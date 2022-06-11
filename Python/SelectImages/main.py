@@ -7,6 +7,7 @@ import os
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
+import csv
 
 def read_ods(fname):
     df= pd.read_excel(fname, engine="odf")
@@ -73,11 +74,16 @@ def main():
     }
     fname = "./../../Metadata/ManualEdits/Keep_AllImageMetadata.xlsx"
     df = read_excel(fname)
+    nemSet = set()
     for i, row in df.iterrows():
+        Slide = str(row['Slide']).strip()
+        Nem = str(row['Nem']).strip()
         Family = str(row['Family']).strip()
         View = str(row['View']).strip()
         if len(Family) < 3:
             Family = 'Unidentified'
+        element = (Slide,Nem,Family)
+        nemSet.add(element)
         Genus = str(row['Genus']).strip()
         View = str(row['View']).strip()
         Nem = str(row['Nem']).strip()
@@ -105,6 +111,22 @@ def main():
         Location_1 = 'Southern Central British Columbia, Canada'
         Location_2 = 'West Kootenay Region'
         add_text_to_image(src_image, dest_image, Src_Image, Family,Genus,View, Location_0,Location_1,Location_2)
+
+    famDict = dict()
+    for i in nemSet:
+        (Slide, Nem_0010, Family) =i
+        famDict[Family] =0
+    for i in nemSet:
+        (Slide, Nem_0010, Family) =i
+        famDict[Family] = famDict[Family] + 1
+    header = ['Family', 'Count']
+    with open('FamilyCount.csv', 'w', encoding='UTF8', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(header)
+        for i in famDict:
+            data = [i, famDict[i]]
+            writer.writerow(data)
+
 
 
     return
