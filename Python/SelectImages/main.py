@@ -70,7 +70,8 @@ def main():
         "lips",
         "spear",
         "stylet",
-        "tooth"
+        "tooth",
+        "anterior"
     }
     fname = "./../../Metadata/ManualEdits/Keep_AllImageMetadata.xlsx"
     df = read_excel(fname)
@@ -89,6 +90,12 @@ def main():
         Nem = str(row['Nem']).strip()
         Moved_Image_Name = str(row['Moved_Image_Name']).strip()
         Src_Image = str(row['Image']).strip()
+        rstr = '\\'
+        Moved_Image_Name = Src_Image.replace(rstr,'_')
+        rstr = r'/'
+        Moved_Image_Name = Moved_Image_Name.replace(rstr, '_')
+        print ('Moved_Image_Name')
+        print (Moved_Image_Name)
         Mag = str(row['Mag']).strip()
         if Mag != '100x':
             continue
